@@ -1,10 +1,24 @@
 import React, {Component} from 'react'
 
+import ChatHeader from './ChatHeader'
+import MessageList from './MessageList'
+import MessageForm from './MessageForm'
+
 class Chat extends Component {
+    constructor() {
+        super()
+        this.state = {messages : [
+            { id: 1, userName: 'jakezimm04', body: 'Talking up a storm'},
+            {id: 2, userName: 'randomfan', body: 'This is a talking app!'}
+        ]}
+    }
+
     render() {
         return(
             <div className = "chat">
-                Chat
+                <ChatHeader />
+                <MessageList  messages = {this.state.messages}/>
+                <MessageForm />
             </div>
         )
     }
