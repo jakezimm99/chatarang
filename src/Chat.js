@@ -7,20 +7,8 @@ import MessageForm from './MessageForm'
 class Chat extends Component {
     constructor() {
         super()
-        this.state = {messages : [
-            { id: 1, 
-            user: { uid : 123,
-                    displayName : 'Jake',
-                    email: 'zimmerjm@rose-hulman.edu'
-            },
-            body: 'Talking up a storm'},
-            { id: 2, 
-                user: { uid : 12345,
-                        displayName : 'Anonymous',
-                        email: 'anon@hulman.edu'
-                },
-                body: 'Talking up a storm'},
-        ]}
+        this.state = {messages : []
+        }
     }
 
     addMessage = (body) => {
