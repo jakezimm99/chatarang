@@ -6,7 +6,7 @@ import RoomList from './RoomList'
 const Sidebar = (props) => {
         return (
             <aside className="Sidebar" style = {styles.sidebar}>
-      <UserInfo user = {props.user} />
+      <UserInfo user = {props.user} signOut = {props.signOut}/>
       <h1 style = {styles.h1}>XTBC 18</h1>
       <RoomList />
     </aside>
