@@ -22,7 +22,9 @@ const styles = {
         alignItems: 'center',
     },
     user : {
-        flex: '1'
+        flex: '1',
+        overflowX: 'hidden',
+        textOverflow: 'ellipsis'
     }
 }
 
