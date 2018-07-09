@@ -15,9 +15,12 @@ import 'firebase/database'
 
   const app = firebase.initializeApp(config);
 
-  
+  // Google Provider
   export const auth = firebase.auth()
   export const googleProvider = new firebase.auth.GoogleAuthProvider()
+
+  // GitHub Provider
+  export const githubProvider = new firebase.auth.GithubAuthProvider()
 
 
   const db = firebase.database(app);

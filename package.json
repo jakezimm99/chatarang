@@ -1,6 +1,7 @@
 {
   "name": "chatarang",
   "version": "0.1.0",
+  "homepage": "https://chatarang-4c888.firebaseapp.com/",
   "private": true,
   "dependencies": {
     "aphrodite": "^2.2.2",
