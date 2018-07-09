@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
+import {auth, googleProvider} from './base'
+
 class SignIn extends Component {
   state = {
     email: '',
@@ -19,6 +21,19 @@ class SignIn extends Component {
     })
   }
 
+  authenticate = () => {
+    auth.signInWithPopup(googleProvider)
+    .then(result => {
+        const {user } = result
+        this.props.handleAuth({
+            uid: user.id,
+            displayName : user.displayName,
+            email : user.email,
+            photoUrl: user.photoUrl
+        })
+    })
+  }
+
   render() {
     return (
       <div className={`SignIn ${css(styles.signIn)}`}>
@@ -29,7 +44,7 @@ class SignIn extends Component {
           </span>
         </header>
         <main className={css(styles.main)}>
-          <form
+          {/* <form
             className={css(styles.form)}
             onSubmit={this.handleSubmit}
           >
@@ -53,7 +68,13 @@ class SignIn extends Component {
             >
               Sign In
             </button>
-          </form>
+          </form> */}
+
+          <button type = "button"
+          className = {css(styles.button)}
+          onClick = {this.authenticate}>
+              Sign in with Google
+            </button>
 
           <div className="blurb">
             <h2 className={css(styles.h2)}>
