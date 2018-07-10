@@ -57,7 +57,10 @@ class Main extends Component {
 
   render() {
     if (this.state.showRoomForm) {
-      return <RoomForm addRoom={this.addRoom} />
+      return <RoomForm
+               addRoom={this.addRoom}
+               hideRoomForm={this.hideRoomForm}
+             />
     }
 
     return (
@@ -67,6 +70,7 @@ class Main extends Component {
           signOut={this.props.signOut}
           rooms={this.state.rooms}
           setCurrentRoom={this.setCurrentRoom}
+          showRoomForm={this.showRoomForm}
         />
         <Chat
           user={this.props.user}

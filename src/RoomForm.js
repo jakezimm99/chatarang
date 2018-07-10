@@ -10,8 +10,15 @@ class RoomForm extends Component {
 
   handleChange = ev => {
     const room = {...this.state.room}
-    room[ev.target.name]= ev.target.value
+    room[ev.target.name] = ev.target.value
+
     this.setState({ room })
+  }
+
+  handleSubmit = ev => {
+    ev.preventDefault()
+    this.props.addRoom(this.state.room)
+    this.props.hideRoomForm()
   }
 
   render() {
@@ -19,7 +26,9 @@ class RoomForm extends Component {
       <div className="RoomForm">
         <main>
           <h2>Create a room</h2>
-          <form>
+          <form
+            onSubmit={this.handleSubmit}
+          >
             <p>
               <label htmlFor="name">
                 Room Name
@@ -30,6 +39,7 @@ class RoomForm extends Component {
                 type="text"
                 name="name"
                 value={this.state.room.name}
+                onChange={this.handleChange}
               />
             </p>
 
@@ -41,10 +51,18 @@ class RoomForm extends Component {
                 type="text"
                 name="description"
                 value={this.state.room.description}
+                onChange={this.handleChange}
               />
             </p>
 
             <div>
+              <button
+                type="button"
+                onClick={this.props.hideRoomForm}
+              >
+                Cancel
+              </button>
+
               <button
                 type="submit"
               >
