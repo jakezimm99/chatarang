@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import Sidebar from './Sidebar'
 import Chat from './Chat'
+import RoomForm from './RoomForm'
 import base from './base'
 
 class Main extends Component {
@@ -11,6 +12,7 @@ class Main extends Component {
       description: 'Chat about stuff',
     },
     rooms: {},
+    showRoomForm: false,
   }
 
   componentDidMount() {
@@ -33,12 +35,31 @@ class Main extends Component {
     base.removeBinding(this.roomsRef)
   }
 
+  addRoom = room => {
+    const rooms = {...this.state.rooms}
+    rooms[room.name] = room
+
+    this.setState({ rooms })
+  }
+
   setCurrentRoom = roomName => {
     const room = this.state.rooms[roomName]
     this.setState({ room })
   }
 
+  showRoomForm = () => {
+    this.setState({ showRoomForm: true })
+  }
+
+  hideRoomForm = () => {
+    this.setState({ showRoomForm: false })
+  }
+
   render() {
+    if (this.state.showRoomForm) {
+      return <RoomForm addRoom={this.addRoom} />
+    }
+
     return (
       <div className="Main" style={styles}>
         <Sidebar
