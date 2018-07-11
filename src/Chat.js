@@ -14,14 +14,14 @@ class Chat extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, _prevState, _snapshot) {
-    if(prevProps.room.name !== this.props.room.name) {
-      this.syncMessages()
-    }
-  }
-
   componentDidMount() {
     this.syncMessages()
+  }
+
+  componentDidUpdate(prevProps, _prevState, _snapshot) {
+    if (prevProps.room.name !== this.props.room.name) {
+      this.syncMessages()
+    }
   }
 
   componentWillUnmount() {
@@ -30,10 +30,11 @@ class Chat extends Component {
 
   syncMessages = () => {
     // Stop syncing with the current endpoint
-    if(this.messagesRef) {
+    if (this.messagesRef) {
       base.removeBinding(this.messagesRef)
     }
 
+    // Sync with the new endpoint
     this.messagesRef = base.syncState(
       `messages/${this.props.room.name}`,
       {
